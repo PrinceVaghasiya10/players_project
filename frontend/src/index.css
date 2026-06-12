@@ -1,0 +1,28 @@
+﻿@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* === Fix: table text visibility ===
+   Makes table rows text fully readable and removes accidental dimming.
+   Add to the bottom of src/index.css
+*/
+table tbody tr,
+table tbody td,
+table tbody th {
+  color: rgba(12, 2, 2, 0.92) !important;   /* brighten text */
+  opacity: 1 !important;                       /* remove dimming */
+}
+
+/* In case your rows use a tailwind-like utility that sets opacity */
+[data-weak-row], /* custom attribute if used */
+tr[class*="opacity-"], /* defensive: remove class-based opacity */
+tbody tr[class*="opacity-"] {
+  opacity: 1 !important;
+}
+
+/* Slightly stronger contrast for column text (optional) */
+table tbody td {
+  text-shadow: 0 1px 0 rgba(0,0,0,0.18);
+  font-weight: 600;
+}
